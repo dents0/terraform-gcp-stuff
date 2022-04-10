@@ -1,0 +1,67 @@
+services:
+    - service_name: hello-world-test
+      project_id: dents0-fake-project-22
+      region: europe-west3
+      gcr_image: "eu.gcr.io/repo/img:tag"
+      ports:
+          name: http1
+          port: 80
+      service_account_email: cloudrun-operations@dents0-fake-project-22
+      template_annotations:
+          autoscaling.knative.dev/maxScale: 1
+          autoscaling.knative.dev/minScale: 1
+          run.googleapis.com/client-name: terraform
+          run.googleapis.com/vpc-access-connector: fake-svps
+          run.googleapis.com/vpc-access-egress: internal
+      service_annotations:
+          run.googleapis.com/ingress: internal
+      members:
+          - allUsers
+
+    - service_name: hello-world-test2
+      project_id: dents0-fake-project-22
+      region: europe-west3
+      gcr_image: "eu.gcr.io/repo/img:tag"
+      ports:
+          name: http1
+          port: 80
+      service_account_email: cloudrun-operations@dents0-fake-project-22
+      template_annotations:
+          autoscaling.knative.dev/maxScale: 1
+          autoscaling.knative.dev/minScale: 1
+          run.googleapis.com/client-name: terraform
+          run.googleapis.com/vpc-access-connector: fake-svps
+          run.googleapis.com/vpc-access-egress: internal
+      service_annotations:
+          run.googleapis.com/ingress: internal
+      members:
+          - allUsers
+
+    - service_name: showcase-cloudrun
+      project_id: dents0-fake-project-22
+      region: europe-west3
+      gcr_image: "eu.gcr.io/repo/img:tag"
+      ports:
+          name: http1
+          port: 80
+      service_account_email: cloudrun-operations@dents0-fake-project-22
+      template_annotations:
+          autoscaling.knative.dev/maxScale: 1
+          autoscaling.knative.dev/minScale: 1
+          run.googleapis.com/client-name: terraform
+          run.googleapis.com/vpc-access-connector: fake-svps
+          run.googleapis.com/vpc-access-egress: internal
+          # run.googleapis.com/cloudsql-instances:
+          #     - "dents0-fake-project-22:europe-west3:fake-instance"
+      service_annotations:
+          run.googleapis.com/ingress: internal
+          run.googleapis.com/launch-stage: BETA
+      env_secret_vars:
+          - name: FAKE_SECRET_ONE
+            value_from:
+                secret_key_ref:
+                    - name: projects/dents0-fake-project-22/secrets/FAKE_SECRET_TWO
+                      key: 1
+
+      members:
+          - allUsers

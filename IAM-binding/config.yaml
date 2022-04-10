@@ -1,0 +1,20 @@
+project-iam-bindings:
+    - projectid: my-project-id
+      member: serviceAccount:terraform-test-1@my-project-id.iam.gserviceaccount.com
+      roles: ["roles/cloudsql.viewer", "roles/cloudsql.editor"]
+
+    - projectid: my-project-id
+      member: serviceAccount:terraform-test-2@my-project-id.iam.gserviceaccount.com
+      roles: ["roles/cloudsql.viewer", "roles/storage.objectCreator"]
+
+    - projectid: my-project-id
+      member: serviceAccount:terraform-test-3@my-project-id.iam.gserviceaccount.com
+      roles: ["roles/storage.objectViewer", "roles/cloudtasks.viewer"]
+
+    - projectid: my-project-id
+      member: serviceAccount:terraform-test-4@my-project-id.iam.gserviceaccount.com
+      roles: ["roles/run.developer", "roles/run.invoker"]
+
+    - projectid: my-project-id
+      member: serviceAccount:terraform-test-5@my-project-id.iam.gserviceaccount.com
+      roles: ["roles/run.invoker", "roles/bigquery.admin"]
